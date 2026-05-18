@@ -37,8 +37,8 @@ pub fn is_using_api_key_for_provider(provider: &LLMProvider, app: &AppContext) -
         LLMProvider::OpenAI => api_keys.is_some_and(|keys| keys.openai.is_some()),
         LLMProvider::Anthropic => api_keys.is_some_and(|keys| keys.anthropic.is_some()),
         LLMProvider::Google => api_keys.is_some_and(|keys| keys.google.is_some()),
-        // super-warp-terminal: MiniMax BYOK support
         LLMProvider::MiniMax => api_keys.is_some_and(|keys| {
+            // super-warp-terminal: MiniMax BYOK check
             keys.custom_endpoints.iter().any(|ep| ep.name == "minimax")
         }),
         _ => false,
@@ -111,7 +111,6 @@ pub enum LLMProvider {
     Anthropic,
     Google,
     Xai,
-    // super-warp-terminal: MiniMax provider for open source builds
     MiniMax,
     Unknown,
 }
@@ -124,7 +123,7 @@ impl LLMProvider {
             LLMProvider::Anthropic => Some(Icon::ClaudeLogo),
             LLMProvider::Google => Some(Icon::GeminiLogo),
             LLMProvider::Xai => None,
-            LLMProvider::MiniMax => None,
+            LLMProvider::MiniMax => None, // super-warp-terminal: MiniMax icon optional
             LLMProvider::Unknown => None,
         }
     }
