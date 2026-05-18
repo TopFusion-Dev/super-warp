@@ -1,0 +1,43 @@
+{
+  "$schema": "https://super-opencode.local/config.json",
+  "provider": {},
+  "topflow": {
+    "mode": "commander",
+    "models": {
+      "worker": "minimax-coding-plan/MiniMax-M2.7",
+      "commander": "minimax/minimax-m2.7"
+    },
+    "context": {
+      "default_context_limit": 128000,
+      "warning_threshold": 0.7,
+      "compact_threshold": 1.0,
+      "hybrid_compaction": true
+    },
+    "confidence": {
+      "keep_threshold": 0.93,
+      "delegate_threshold": 0.75,
+      "mentor_threshold": 0.55
+    },
+    "statusline": {
+      "enabled": true,
+      "preset": "cockpit",
+      "refresh_interval_ms": 1000,
+      "fields": [
+        "mode",
+        "commander_tokens",
+        "worker_tokens",
+        "total_tokens",
+        "context_percent",
+        "running_agents",
+        "done_agents",
+        "cost"
+      ]
+    }
+  },
+  "permission": {},
+  "mcp": {},
+  "tools": {
+    "github-triage": false,
+    "github-pr-search": false,
+  },
+}
